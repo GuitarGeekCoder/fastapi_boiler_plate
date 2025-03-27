@@ -2,8 +2,7 @@
 from fastapi import FastAPI
 from web_app.router.users import user_router
 from web_app.router.organization import org_router
-from database import Base, engine
-# import web_app.models
+from fastapi_boiler_plate.database import Base, engine
 
 # Create all tables
 Base.metadata.create_all(bind=engine)

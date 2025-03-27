@@ -16,7 +16,9 @@ DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
 # Build the database URL dynamically
-SQLALCHEMY_DATABASE_URL = f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+SQLALCHEMY_DATABASE_URL = (
+    f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
 
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:1234@localhost:5432/fastapi_db"
 
@@ -24,6 +26,7 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)  # SQLite specific argument
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
 
 # Function to get the database session (dependency injection)
 def get_db():
